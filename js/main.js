@@ -23,7 +23,7 @@ console.log(divId);
 $('#yourdiv').css({"backgroundColor": "skyblue", "color": "blue"});
 $('p').css('color','red');
 $('p').css({
-	'font-size': '5em',
+	'font-size': '3em',
 	'text-align': 'center'
 });
 
@@ -106,7 +106,7 @@ function addColumns(cityPop){
 function addEvents(){
 	/* adding mouse-over event to table element*/
 
-	$("table").mouseover(function(){
+	$("#yourdiv").mouseover(function(){
 		//color will take on an rgb value
 		
 		var color = "rgb(";
@@ -117,7 +117,7 @@ function addEvents(){
 			//random will be a number between 0 and 254, 
 			//rounded to the nearest whole number
 			
-			color += "random";
+			color += random;
 
 			if (i<2){
 				color += ",";
@@ -129,7 +129,7 @@ function addEvents(){
 		};
 		//css color property is randomly generated
 
-		$(this).css('color', color);
+		$(this).css("color", color);
 	});
 
 	function clickme(){
@@ -139,10 +139,9 @@ function addEvents(){
 
 	$('table').on('click', clickme);
 };
-//call function with cityPop param
+//call functions with cityPop and correct id params
 addColumns(cityPop);
-addEvents();
-
+addEvents("#yourdiv");
 };
 //initialize .js in HTML document
 $(document).ready(initialize);
