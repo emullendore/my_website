@@ -110,38 +110,41 @@ function addEvents(){
 		//color will take on an rgb value
 		
 		var color = "rgb(";
-
+		//loop will iterate 0 through 2 at one step increments 
 		for (var i=0; i<3; i++){
 
 			var random = Math.round(Math.random() * 255);
-			//3 values are randomly determined
-			//each will have a max value of 255
+			//random will be a number between 0 and 254, 
+			//rounded to the nearest whole number
+			
 			color += "random";
 
 			if (i<2){
 				color += ",";
-			
+			//if i less than 2, add comma after 'color'
 			} else {
 				color += ")";
+			//else, add parenthesis after 'color'
 			}
 		};
+		//css color property is randomly generated
 
 		$(this).css('color', color);
 	});
 
 	function clickme(){
-
+		//function will activate alert when table is clicked
 		alert('Hey, you clicked me!');
 	};
 
 	$('table').on('click', clickme);
 };
-
+//call function with cityPop param
 addColumns(cityPop);
 addEvents();
 
 };
-
+//initialize .js in HTML document
 $(document).ready(initialize);
 
 
