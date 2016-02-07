@@ -143,10 +143,55 @@ function addEvents(){
 addColumns(cityPop);
 addEvents("#yourdiv");
 };
+
+//Module Three
+
+//basic ajax method as defined with a function
+function jQueryAjax() {
+	//variable to hold data
+	var mydata;
+	//access ajax
+	$.ajax("data/map.geojson",{
+		dataType: "json",
+		success: function(response) {
+			mydata=response;
+			console.log(mydata);
+			//mydata is logged as an object, an array with 15 elements
+		}
+});
+/* success is dependent on fucntion callback,
+which will console.log the response. Console log outside
+function: mydata will log as undefined */
+console.log(mydata);
+
+};
+//connect the function that employs ajax with the document
+$(document).ready(jQueryAjax);
+
+//debug ajax.js
+
+function debugAjax(){
+	//summon jquery ajax, taking the source as an argument
+	
+	$.ajax("data/map.geojson", {
+		dataType: "json",
+		success: debugCallback //success will occur after data has arrived
+		});
+
+	
+};
+
+function debugCallback(response, status){
+		console.log(response);
+		$('#yourdiv').append('<br>GeoJSON data:</br>' + JSON.stringify(response));
+};
+
+//when document ready, run debugAjax function
+$(document).ready(debugAjax);
+
 //initialize .js in HTML document
+
 $(document).ready(initialize);
-
-
 
 
 
