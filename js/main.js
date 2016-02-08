@@ -9,12 +9,12 @@ jQuery('#mydiv').html('Hello World!');
 
 
 
-$('ul').on("click", function(){
-    alert("This is actually a poem by Dr. Suess.");
-});
-$('ul').off("click", function() {
-	alert("good bye, world");
-});
+// $('ul').on("click", function(){
+//     alert("This is actually a poem by Dr. Suess.");
+// });
+// $('ul').off("click", function() {
+// 	alert("good bye, world");
+// });
 
 var divId=$('#yourdiv').attr('id');
 $('#yourdiv').append("the id:"+"  "+divId);
@@ -27,8 +27,6 @@ $('p').css({
 	'text-align': 'center'
 });
 
-
-//$(document).ready(alert("Boo!"));
 
 function initialize() {
 	largeCities();
@@ -144,46 +142,49 @@ addColumns(cityPop);
 addEvents("#yourdiv");
 };
 
-//Module Three
+//MODULE THREE
 
-//basic ajax method as defined with a function
+//basic ajax method, defined with a function
 function jQueryAjax() {
-	//variable to hold data
+	//variable mydata to hold data
 	var mydata;
 	//access ajax
 	$.ajax("data/map.geojson",{
 		dataType: "json",
+		/*success will be fucntion with response parameter,
+		which will console.log the response.*/
 		success: function(response) {
 			mydata=response;
 			console.log(mydata);
 			//mydata is logged as an object, an array with 15 elements
 		}
 });
-/* success is dependent on fucntion callback,
-which will console.log the response. Console log outside
+/*Console log outside
 function: mydata will log as undefined */
 console.log(mydata);
 
 };
-//connect the function that employs ajax with the document
+//connect the ajax function with the document
 $(document).ready(jQueryAjax);
 
-//debug ajax.js
+
+//Debug ajax.js
+
 
 function debugAjax(){
-	//summon jquery ajax, taking the source as an argument
-	
+	//jquery ajax, taking the source as an argument
 	$.ajax("data/map.geojson", {
 		dataType: "json",
-		success: debugCallback //success will occur after data has arrived
-		});
-
-	
+		/*success will occur after data has arrived
+		from debugCallback function*/
+		success: debugCallback 
+		});	
 };
 
-function debugCallback(response, status){
+function debugCallback(response){
 		console.log(response);
-		$('#yourdiv').append('<br>GeoJSON data:</br>' + JSON.stringify(response));
+		//map.geojson is appended,stringified
+		$('#mydiv').append('<br>GeoJSON data:</br>' + JSON.stringify(response));
 };
 
 //when document ready, run debugAjax function
