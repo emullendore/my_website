@@ -149,7 +149,7 @@ function jQueryAjax() {
 	//variable mydata to hold data
 	var mydata;
 	//access ajax
-	$.ajax("data/map.geojson",{
+	$.ajax("data/populations.geojson",{
 		dataType: "json",
 		/*success will be fucntion with response parameter,
 		which will console.log the response.*/
@@ -169,11 +169,9 @@ $(document).ready(jQueryAjax);
 
 
 //Debug ajax.js
-
-
 function debugAjax(){
 	//jquery ajax, taking the source as an argument
-	$.ajax("data/map.geojson", {
+	$.ajax("data/populations.geojson", {
 		dataType: "json",
 		/*success will occur after data has arrived
 		from debugCallback function*/
@@ -183,7 +181,7 @@ function debugAjax(){
 
 function debugCallback(response){
 		console.log(response);
-		//map.geojson is appended,stringified
+		//populations.geojson is appended,stringified
 		$('#mydiv').append('<br>GeoJSON data:</br>' + JSON.stringify(response));
 };
 
